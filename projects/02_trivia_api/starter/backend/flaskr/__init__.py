@@ -115,6 +115,13 @@ def create_app(test_config=None):
         category = int(category) + 1
       difficulty = body.get('difficulty', None)
 
+      if answer is None or q is None:
+        abort(422)
+      if answer == '':
+        abort(422)
+      if q == '':
+        abort(422)
+
       question = Question(q, answer, category, difficulty)
 
       question.insert()
@@ -189,18 +196,28 @@ def create_app(test_config=None):
   def play_quiz():
     previous_questions = request.get_json().get('previous_questions', [])
     quiz_category = request.get_json().get('quiz_category')
-    try: 
+
+    try:
       if quiz_category['type'] == 'click':
         questions = Question.query.all()
       else:
         cat = int(quiz_category['id']) + 1
         questions = Question.query.filter(Question.category==cat).all()
+
+      if len(questions) == 0:
+        abort(404)
+
+      # Return None if all of the questions have been used
       if len(questions) == len(previous_questions):
         return jsonify({
           'success': True,
           'question': None
         })
+    except:
+      abort(404)
 
+
+    try: 
       rand = randint(0, len(questions) - 1)
 
       while questions[rand].question is None:
@@ -227,7 +244,7 @@ def create_app(test_config=None):
     return jsonify({
     "success": False, 
     "error": 404,
-    "message": "Not found"
+    "message": "Resource not found"
     }), 404
 
   @app.errorhandler(422)
