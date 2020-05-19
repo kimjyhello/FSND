@@ -274,7 +274,7 @@
         - Returns a list of questions, total number of questions that match the search term, and the success value. 
     - Sample:
         - curl http://127.0.0.1:5000/searchQuestions -X POST -H "Content-Type: application/json" -d '{"searchTerm":"title"}'
-        '''
+        ```
         {
             "current_category": null, 
             "questions": [
