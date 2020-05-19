@@ -8,13 +8,13 @@
 
 ## Error Handling
 - Errors are returned as JSON objects in the following format: 
-    '''
+    ```
     {
         "success": False, 
         "error": 404,
         "message": "Not found"
     }
-    '''
+    ```
 - The API will return two error types when requests fail:
     - 404: Resource Not Found
     - 422: Not processable
@@ -25,7 +25,7 @@
         - Returns a list of categories, success value, and total number of categories
     - Sample:
         - curl http://127.0.0.1:5000/categories
-        '''
+        ```
         {
             "categories": [
                 "Science",
@@ -38,14 +38,14 @@
             "success": true,
             "total_categories": 6
         }
-        '''
+        ```
 
 - GET /categories/{category_id}/questions
     - General:
         - Returns a list of questions under the given category ID, success value, total number of questions under the category ID, and the current category ID.
     - Sample:
         - curl http://127.0.0.1:5000/categories/2/questions
-        '''
+        ```
         {
             "current_category": 1, 
             "questions": [
@@ -74,7 +74,7 @@
             "success": true, 
             "total_questions": 3
         }
-        '''
+        ```
 
 - GET /questions
     - General:
@@ -82,7 +82,7 @@
         - Results are paginated in groups of 10. Include a request argument to choose page number, starting from 1.
     - Sample:
         - curl http://127.0.0.1:5000/questions
-            '''
+            ```
             {
                 "categories": [
                     "Science",
@@ -168,25 +168,25 @@
                 "success": true,
                 "total_questions": 41
             }
-            '''
+            ```
 
 - POST /questions
     - General:
         - Creates a new question using the submitted question, difficulty, answer and category. Returns the success value. 
     - Sample:
         - curl http://127.0.0.1:5000/questions -X POST -H "Content-Type: application/json" -d '{"question":"What is 1 + 1?", "answer":"2", "difficulty":"1", "category":"0"}'
-            '''
+            ```
             {
                 "success": true
             }
-            '''
+            ```
 
 - DELETE /questions/{question_id}
     - General:
         - Deletes the question of the given ID if it exists. Returns the id of the deleted question, success value, the new total number of questions, and the list of questions based on current page number
     - Sample:
         - curl http://127.0.0.1:5000/questions/60 -X DELETE 
-        '''
+        ```
         {
             "deleted": 60, 
             "questions": [
@@ -296,7 +296,7 @@
             "success": true, 
             "total_questions": 2
         }
-        '''
+        ```
 
 - POST /quizzes
     - General:
@@ -306,7 +306,7 @@
          
     - Sample:
         - curl http://127.0.0.1:5000/quizzes -X POST -H "Content-Type: application/json" -d '{"previous-questions":[], "quiz_category":{"type":"click", "id":0}}'
-        '''
+        ```
         {
             "question": {
                 "answer": "George Washington Carver", 
@@ -317,6 +317,6 @@
             }, 
             "success": true
         }
-        '''
+        ```
 
       
