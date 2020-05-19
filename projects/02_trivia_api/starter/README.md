@@ -8,7 +8,6 @@
 
 ## Error Handling
 - Errors are returned as JSON objects in the following format: 
-
     {
         "success": False, 
         "error": 404,
@@ -20,10 +19,10 @@
 
 ## Resource Endpoint Library
 - GET /categories
-    General: 
+    - General: 
         - Returns a list of categories, success value, and total number of categories
-    Sample:
-        curl http://127.0.0.1:5000/categories
+    - Sample:
+        - curl http://127.0.0.1:5000/categories
 
         {
             "categories": [
@@ -39,10 +38,10 @@
         }
 
 - GET /categories/{category_id}/questions
-    General:
+    - General:
         - Returns a list of questions under the given category ID, success value, total number of questions under the category ID, and the current category ID.
-    Sample:
-        curl http://127.0.0.1:5000/categories/2/questions
+    - Sample:
+        - curl http://127.0.0.1:5000/categories/2/questions
 
         {
             "current_category": 1, 
@@ -74,11 +73,11 @@
         }
 
 - GET /questions
-    General:
+    - General:
         - Returns a list of questions, sucess value, total number of questions, and a list of category names 
         - Results are paginated in groups of 10. Include a request argument to choose page number, starting from 1.
-    Sample:
-        curl http://127.0.0.1:5000/questions
+    - Sample:
+        - curl http://127.0.0.1:5000/questions
 
         {
             "categories": [
@@ -167,20 +166,20 @@
         }
 
 - POST /questions
-    General:
+    - General:
         - Creates a new question using the submitted question, difficulty, answer and category. Returns the success value. 
-    Sample:
-        curl http://127.0.0.1:5000/questions -X POST -H "Content-Type: application/json" -d '{"question":"What is 1 + 1?", "answer":"2", "difficulty":"1", "category":"0"}'
+    - Sample:
+        - curl http://127.0.0.1:5000/questions -X POST -H "Content-Type: application/json" -d '{"question":"What is 1 + 1?", "answer":"2", "difficulty":"1", "category":"0"}'
 
         {
             "success": true
         }
 
 - DELETE /questions/{question_id}
-    General:
+    - General:
         - Deletes the question of the given ID if it exists. Returns the id of the deleted question, success value, the new total number of questions, and the list of questions based on current page number
-    Sample:
-        curl http://127.0.0.1:5000/questions/60 -X DELETE 
+    - Sample:
+        - curl http://127.0.0.1:5000/questions/60 -X DELETE 
 
         {
             "deleted": 60, 
@@ -262,12 +261,12 @@
 
     
 - POST /searchQuestions
-    General:
+    - General:
         - Get questions based on the search term. 
         - Results are paginated in groups of 10. Include a request argument to choose page number, starting from 1.
         - Returns a list of questions, total number of questions that match the search term, and the success value. 
-    Sample:
-        curl http://127.0.0.1:5000/searchQuestions -X POST -H "Content-Type: application/json" -d '{"searchTerm":"title"}'
+    - Sample:
+        - curl http://127.0.0.1:5000/searchQuestions -X POST -H "Content-Type: application/json" -d '{"searchTerm":"title"}'
 
         {
             "current_category": null, 
@@ -292,13 +291,13 @@
         }
 
 - POST /quizzes
-    General:
+    - General:
         - Get questions based on the search term. 
         - Results are paginated in groups of 10. Include a request argument to choose page number, starting from 1.
         - Returns the next question within the given category that is not one of the previous questions, if any exists, and the success value. 
          
-    Sample:
-        curl http://127.0.0.1:5000/quizzes -X POST -H "Content-Type: application/json" -d '{"previous-questions":[], "quiz_category":{"type":"click", "id":0}}'
+    - Sample:
+        - curl http://127.0.0.1:5000/quizzes -X POST -H "Content-Type: application/json" -d '{"previous-questions":[], "quiz_category":{"type":"click", "id":0}}'
 
         {
             "question": {
@@ -310,5 +309,5 @@
             }, 
             "success": true
         }
-        
+
       
