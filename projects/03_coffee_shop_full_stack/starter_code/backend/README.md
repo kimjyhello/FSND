@@ -52,8 +52,8 @@ The `--reload` flag will detect file changes and restart the server automaticall
 
 ### Setup Auth0
 
-1. Create a new Auth0 Account
-2. Select a unique tenant domain
+1. Create a new Auth0 Account                       
+2. Select a unique tenant domain                            coffeeshop-vjkim.auth0.com
 3. Create a new, single page web application
 4. Create a new API
     - in API Settings:
@@ -71,6 +71,8 @@ The `--reload` flag will detect file changes and restart the server automaticall
         - can perform all actions
 7. Test your endpoints with [Postman](https://getpostman.com). 
     - Register 2 users - assign the Barista role to one and Manager role to the other.
+https://coffeeshop-vjkim.auth0.com/authorize?audience=menu&response_type=token&client_id=yBsCASYxZejij8XtV8hdMmyvVuCF5oKy&redirect_uri=http://127.0.0.1:30000
+
     - Sign into each account and make note of the JWT.
     - Import the postman collection `./starter_code/backend/udacity-fsnd-udaspicelatte.postman_collection.json`
     - Right-clicking the collection folder for barista and manager, navigate to the authorization tab, and including the JWT in the token field (you should have noted these JWTs).
